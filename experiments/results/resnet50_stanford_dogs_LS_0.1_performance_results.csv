@@ -1,0 +1,7 @@
+,Threshold Attack Precision,Threshold Attack Recall,Threshold Attack FPR,Salem Attack Precision,Salem Attack Recall,Salem Attack FPR,Entropy Attack Precision,Entropy Attack Recall,Entropy Attack FPR
+Train Acc. Target,0.9962,,,,,,,,
+Test Acc. Target,0.6465,,,,,,,,
+ECE Target,0.0580,,,,,,,,
+Train Acc. Shadow,0.9882,,,,,,,,
+Test Acc. Shadow,0.6543,,,,,,,,
+ECE Target,0.0572,,,,,,,,
