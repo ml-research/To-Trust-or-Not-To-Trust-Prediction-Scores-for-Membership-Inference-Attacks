@@ -90,12 +90,14 @@ We use various datasets in our experiments. The following figure gives a short o
 ## Citation
 If you build upon our work, please don't forget to cite us.
 ```
-@misc{hintersdorf2021mi,
-  title     = {Do Not Trust Prediction Scores for Membership Inference Attacks},
-  author    = {Dominik Hintersdorf and Lukas Struppek and Kristian Kersting},
-  year      = {2021}
-}
-```
+@misc{hintersdorf2021trust,
+      title={Do Not Trust Prediction Scores for Membership Inference Attacks}, 
+      author={Dominik Hintersdorf and Lukas Struppek and Kristian Kersting},
+      year={2021},
+      eprint={2111.09076},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG}
+}```
 
 ## Implementation Credits
 Some of our implementations rely on other repos. We want to thank the authors for making their code publicly available. 
