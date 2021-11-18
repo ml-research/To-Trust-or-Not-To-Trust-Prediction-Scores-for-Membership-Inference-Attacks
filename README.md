@@ -97,7 +97,8 @@ If you build upon our work, please don't forget to cite us.
       eprint={2111.09076},
       archivePrefix={arXiv},
       primaryClass={cs.LG}
-}```
+}
+```
 
 ## Implementation Credits
 Some of our implementations rely on other repos. We want to thank the authors for making their code publicly available. 
