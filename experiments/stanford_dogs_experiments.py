@@ -300,6 +300,8 @@ if __name__ == '__main__':
         )
         print(f'LLLA Calibrated Target Model Test Acc={evaluate(target_model, dataset_test):.4f}')
         print(f'LLLA Calibrated Shadow Model Test Acc={evaluate(shadow_model, dataset_test):.4f}')
+        print(f'Overconfidence Error LLLA Calibrated Target Model={overconfidence_error(target_model, dataset_test, num_bins=15, apply_softmax=False):.4f}')
+        print(f'Overconfidence Error LLLA Calibrated Shadow Model={overconfidence_error(shadow_model, dataset_test, num_bins=15, apply_softmax=False):.4f}')
 
     # if temperature scaling should be used calibrate the target and shadow model
     if USE_TEMP:
@@ -318,6 +320,8 @@ if __name__ == '__main__':
         )
         print(f'Temp. Calibrated Target Model Test Acc={evaluate(target_model, dataset_test):.4f}')
         print(f'Temp. Calibrated Shadow Model Test Acc={evaluate(shadow_model, dataset_test):.4f}')
+        print(f'Overconfidence Error Temp. Calibrated Target Model={overconfidence_error(target_model, dataset_test, num_bins=15, apply_softmax=False):.4f}')
+        print(f'Overconfidence Error Temp. Calibrated Shadow Model={overconfidence_error(shadow_model, dataset_test, num_bins=15, apply_softmax=False):.4f}')
 
     # create the attacks
     attacks = [
@@ -395,46 +399,46 @@ if __name__ == '__main__':
         csv_writer.writerow(column_labels)
 
         # attack the models using the different non-member sets
-        print('Attack Un-Calibrated Model using Original Non-Members:')
+        print('Attack Model using Original Non-Members:')
         results = attack_model(target_model, attacks, member_target, non_member_target)
         write_results_to_csv(csv_writer, results, row_label='Original')
 
         print('\n')
-        print('Attack Un-Calibrated Model using Fake Dogs Non-Members:')
+        print('Attack Model using Fake Dogs Non-Members:')
         results = attack_model(target_model, attacks, member_target, fake_stanford_dogs)
         write_results_to_csv(csv_writer, results, row_label='Fake Dogs')
 
         print('\n')
-        print('Attack Un-Calibrated Model using AFHQ Dogs Non-Members:')
+        print('Attack Model using AFHQ Dogs Non-Members:')
         results = attack_model(target_model, attacks, member_target, afhq_dogs)
         write_results_to_csv(csv_writer, results, row_label='AFHQ-Dogs')
 
         print('\n')
-        print('Attack Un-Calibrated Model using AFHQ Cats Non-Members:')
+        print('Attack Model using AFHQ Cats Non-Members:')
         results = attack_model(target_model, attacks, member_target, afhq_cats)
         write_results_to_csv(csv_writer, results, row_label='AFHQ-Cats')
 
         print('\n')
-        print('Attack Un-Calibrated Model using AFHQ Wild Non-Members:')
+        print('Attack Model using AFHQ Wild Non-Members:')
         results = attack_model(target_model, attacks, member_target, afhq_wilds)
         write_results_to_csv(csv_writer, results, row_label='AFHQ-Wilds')
 
         print('\n')
-        print('Attack Un-Calibrated Model using AFHQ Non-Dogs Non-Members:')
+        print('Attack Model using AFHQ Non-Dogs Non-Members:')
         results = attack_model(target_model, attacks, member_target, afhq_rest)
         write_results_to_csv(csv_writer, results, row_label='AFHQ-NonDogs')
 
         print('\n')
-        print('Attack Un-Calibrated Model using Permuted Non-Members:')
+        print('Attack Model using Permuted Non-Members:')
         results = attack_model(target_model, attacks, member_target, permuted_non_member_target)
         write_results_to_csv(csv_writer, results, row_label='Permuted')
 
         print('\n')
-        print('Attack Un-Calibrated Model using Scaled Non-Members:')
+        print('Attack Model using Scaled Non-Members:')
         results = attack_model(target_model, attacks, member_target, scaled_non_member_target)
         write_results_to_csv(csv_writer, results, row_label='Scaled')
 
         print('\n')
-        print('Attack Un-Calibrated Model using Non-Members without Normalization:')
+        print('Attack Model using Non-Members without Normalization:')
         results = attack_model(target_model, attacks, member_target, un_normalized_non_member_target)
         write_results_to_csv(csv_writer, results, row_label='No Normalization')

@@ -335,6 +335,8 @@ if __name__ == '__main__':
         )
         print(f'LLLA Calibrated Target Model Test Acc={evaluate(target_model, target_test):.4f}')
         print(f'LLLA Calibrated Shadow Model Test Acc={evaluate(shadow_model, shadow_test):.4f}')
+        print(f'Overconfidence Error LLLA Calibrated Target Model={overconfidence_error(target_model, target_test, num_bins=15, apply_softmax=False):.4f}')
+        print(f'Overconfidence Error LLLA Calibrated Shadow Model={overconfidence_error(shadow_model, shadow_test, num_bins=15, apply_softmax=False):.4f}')
 
     # if temperature scaling should be used calibrate the target and shadow model
     if USE_TEMP:
@@ -353,6 +355,8 @@ if __name__ == '__main__':
         )
         print(f'Temp. Calibrated Target Model Test Acc={evaluate(target_model, target_test):.4f}')
         print(f'Temp. Calibrated Shadow Model Test Acc={evaluate(shadow_model, shadow_test):.4f}')
+        print(f'Overconfidence Error Temp. Calibrated Target Model={overconfidence_error(target_model, target_test, num_bins=15, apply_softmax=False):.4f}')
+        print(f'Overconfidence Error Temp. Calibrated Shadow Model={overconfidence_error(shadow_model, shadow_test, num_bins=15, apply_softmax=False):.4f}')
 
     # create the attacks
     attacks = [
