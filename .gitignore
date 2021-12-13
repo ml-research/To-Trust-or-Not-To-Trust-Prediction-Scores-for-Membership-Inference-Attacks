@@ -8,6 +8,7 @@
 !experiments/pretrained_models/
 !experiments/data/fake_cifar10/Images/*
 *.zip
+datasets/stylegan2-ada-pytorch
 
 # PyTorch
 *.pth

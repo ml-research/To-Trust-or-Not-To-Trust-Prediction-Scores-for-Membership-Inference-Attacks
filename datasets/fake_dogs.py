@@ -13,7 +13,7 @@ import shutil
 
 import sys
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'stylegan_ada'))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'stylegan2-ada-pytorch'))
 
 os.environ['CUBLAS_WORKSPACE_CONFIG'] = ':4096:8'
 
