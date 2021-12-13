@@ -1,6 +1,5 @@
 matplotlib
 numpy
-opencv-python
 pandas
 scikit-learn
 scipy
@@ -16,9 +15,5 @@ pandas
 yapf
 pre-commit
 jupyterlab
-xeus-python
-nbdime
-dlib
 backpack-for-pytorch==1.3.0
 ipywidgets
-ninja
