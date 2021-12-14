@@ -115,11 +115,12 @@ def get_llla_calibrated_models(
     batch_size,
     image_size=32
 ):
+    # calibrate the target and shadow model together to prevent similar samples used for calibration
     calib_set_target = torchvision.datasets.FakeData(
-        size=attack_set_size, image_size=(3, 32, 32), transform=dataset_transform, target_transform=lambda x: int(x)
+        size=attack_set_size, image_size=(3, image_size, image_size), transform=dataset_transform, target_transform=lambda x: int(x)
     )
     calib_set_shadow = torchvision.datasets.FakeData(
-        size=attack_set_size, image_size=(3, 32, 32), transform=dataset_transform, target_transform=lambda x: int(x)
+        size=attack_set_size, image_size=(3, image_size, image_size), transform=dataset_transform, target_transform=lambda x: int(x)
     )
 
     # calib_dataset has to have the same length as the test loader of the target and the shadow model
