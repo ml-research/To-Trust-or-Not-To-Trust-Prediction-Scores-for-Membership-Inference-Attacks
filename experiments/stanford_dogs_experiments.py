@@ -393,7 +393,7 @@ if __name__ == '__main__':
             column_labels.extend(
                 [
                     f'{attack.display_name} {metric}'
-                    for metric in ['Precision', 'Recall', 'FPR', 'TP_MMPS', 'FP_MMPS', 'FN_MMPS', 'TN_MMPS']
+                    for metric in ['Precision', 'Recall', 'AUROC', 'AUPR', 'FPR@95%TPR', 'FPR', 'TP_MMPS', 'FP_MMPS', 'FN_MMPS', 'TN_MMPS']
                 ]
             )
         csv_writer.writerow(column_labels)
