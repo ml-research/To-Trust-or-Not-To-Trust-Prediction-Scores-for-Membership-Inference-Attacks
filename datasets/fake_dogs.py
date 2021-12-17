@@ -26,7 +26,6 @@ class FakeAFHQDogs(ImageFolder):
     """Dataset that was generated using the `StyleGAN2-ADA<https://github.com/NVlabs/stylegan2-ada-pytorch>`.
     This class is based on the AHFQ-Class from torchvision.
     """
-    base_folder = 'fake_afhq_dogs'
     pretrained_net_url = "https://nvlabs-fi-cdn.nvidia.com/stylegan2-ada-pytorch/pretrained/afhqdog.pkl"
     pretrained_net_filename = "pretrained_net_afhqdog.pkl"
     pretrained_net_md5 = '8fa2162d23fe76012bec12b1910b4e65'
@@ -44,7 +43,7 @@ class FakeAFHQDogs(ImageFolder):
     ) -> None:
         self.seed = seed
         torch.manual_seed(self.seed)
-        self.base_folder = os.path.join(root, self.base_folder)
+        self.base_folder = root
         self.train = train
         self.num_generated_samples = num_generated_samples
         self.train_test_split_factor = train_test_split_factor

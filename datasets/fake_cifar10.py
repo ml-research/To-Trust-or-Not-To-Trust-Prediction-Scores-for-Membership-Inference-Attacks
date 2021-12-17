@@ -26,7 +26,6 @@ class FakeCIFAR10(ImageFolder):
     """Dataset that was generated using the `StyleGAN2-ADA<https://github.com/NVlabs/stylegan2-ada-pytorch>`.
     This class is based on the CIFAR10-Class from torchvision.
     """
-    base_folder = 'fake_cifar10'
     pretrained_net_url = "https://nvlabs-fi-cdn.nvidia.com/stylegan2-ada-pytorch/pretrained/cifar10.pkl"
     pretrained_net_filename = "pretrained_net_cifar10.pkl"
     pretrained_net_md5 = 'cf50a75907b9f117266583a355ed3824'
@@ -44,7 +43,7 @@ class FakeCIFAR10(ImageFolder):
     ) -> None:
         self.seed = seed
         torch.manual_seed(self.seed)
-        self.base_folder = os.path.join(root, self.base_folder)
+        self.base_folder = root
         self.train = train
         self.num_generated_samples = num_generated_samples
         self.train_test_split_factor = train_test_split_factor

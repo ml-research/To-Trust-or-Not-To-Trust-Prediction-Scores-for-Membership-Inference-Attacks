@@ -186,15 +186,15 @@ if __name__ == '__main__':
     )
 
     original_train_dataset = torchvision.datasets.CIFAR10(
-        root=DATA_FOLDER, train=True, download=True, transform=dataset_transform
+        root=os.path.join(DATA_FOLDER, 'cifar10'), train=True, download=True, transform=dataset_transform
     )
     original_test_dataset = torchvision.datasets.CIFAR10(
-        root=DATA_FOLDER, train=False, download=True, transform=dataset_transform
+        root=os.path.join(DATA_FOLDER, 'cifar10'), train=False, download=True, transform=dataset_transform
     )
 
     # get the cifar100 dataset as OOD dataset
     cifar100_ood_dataset = torchvision.datasets.CIFAR100(
-        root=DATA_FOLDER, train=True, download=True, transform=dataset_transform
+        root=os.path.join(DATA_FOLDER, 'cifar100'), train=True, download=True, transform=dataset_transform
     )
 
     # get the stl10 dataset and filter out all monkeys since there are no monkeys in the cifar10 dataset
@@ -204,7 +204,7 @@ if __name__ == '__main__':
         return stl10_to_cifar[idx]
 
     stl10_ood_dataset = torchvision.datasets.STL10(
-        root=DATA_FOLDER,
+        root=os.path.join(DATA_FOLDER, 'stl10'),
         split='train',
         download=True,
         transform=dataset_transform,
@@ -215,14 +215,14 @@ if __name__ == '__main__':
 
     # get the svhn dataset
     svhn_ood_dataset = torchvision.datasets.SVHN(
-        root=DATA_FOLDER, split='train', download=True, transform=dataset_transform
+        root=os.path.join(DATA_FOLDER, 'svhn'), split='train', download=True, transform=dataset_transform
     )
     # get the stanford dogs dataset
-    stanford_dogs_ood_dataset = StanfordDogs(root=DATA_FOLDER, train=True, download=True, transform=dataset_transform)
+    stanford_dogs_ood_dataset = StanfordDogs(root=os.path.join(DATA_FOLDER, 'stanford_dogs'), train=True, download=True, transform=dataset_transform)
     # get the generated cifar10 images
-    fake_cifar_ood_dataset = FakeCIFAR10(root=DATA_FOLDER, train=True, transform=dataset_transform)
+    fake_cifar_ood_dataset = FakeCIFAR10(root=os.path.join(DATA_FOLDER, 'fake_cifar10'), train=True, transform=dataset_transform)
     # get the afhq datasets and the subsets containing only cats and dogs respectively
-    afhq_ood_dataset = AFHQ(root=DATA_FOLDER, train=True, download=True, transform=dataset_transform)
+    afhq_ood_dataset = AFHQ(root=os.path.join(DATA_FOLDER, 'afhq'), train=True, download=True, transform=dataset_transform)
     afhq_cats_ood_dataset = Subset(afhq_ood_dataset, np.where(np.array(afhq_ood_dataset.targets) == 0)[0])
     afhq_dogs_ood_dataset = Subset(afhq_ood_dataset, np.where(np.array(afhq_ood_dataset.targets) == 1)[0])
 
@@ -325,7 +325,8 @@ if __name__ == '__main__':
             shadow_train=shadow_train,
             attack_set_size=ATTACK_SET_SIZE,
             dataset_transform=dataset_transform,
-            batch_size=BATCH_SIZE
+            batch_size=BATCH_SIZE,
+            image_size=32
         )
         print(
             f'ECE LLLA Calibrated Target={expected_calibration_error(target_model, target_test, num_bins=15, apply_softmax=False):.4f}'

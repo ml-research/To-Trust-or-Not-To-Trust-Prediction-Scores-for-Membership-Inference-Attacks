@@ -11,7 +11,6 @@ class StanfordDogs(ImageFolder):
     """`Stanford Dogs Dataset <http://vision.stanford.edu/aditya86/ImageNetDogs/main.html>`_ Dataset.
     This class is based on the CIFAR10-Class from torchvision
     """
-    base_folder = 'stanford_dogs'
     url = "http://vision.stanford.edu/aditya86/ImageNetDogs/images.tar"
     filename = "images.tar"
     tar_md5 = '1bb1f2a596ae7057f99d7d75860002ef'
@@ -33,7 +32,7 @@ class StanfordDogs(ImageFolder):
         target_transform: Optional[Callable] = None,
         download: bool = False
     ) -> None:
-        self.base_folder = os.path.join(root, self.base_folder)
+        self.base_folder = root
         self.train = train
 
         if download:

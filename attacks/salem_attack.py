@@ -74,9 +74,9 @@ class SalemAttack(PredictionScoreAttack):
             running_loss = 0.0
             for x, y in DataLoader(attack_dataset, batch_size=self.batch_size, shuffle=True):
                 x, y = x.to(self.device), y.to(self.device)
+                optimizer.zero_grad()
                 output = self.attack_model(x).squeeze()
                 loss = loss_fkt(output, y.float())
-                optimizer.zero_grad()
                 loss.backward()
                 optimizer.step()
 
