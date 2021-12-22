@@ -180,9 +180,9 @@ if __name__ == '__main__':
         [T.Resize(224), T.CenterCrop((224, 224)), T.ToTensor(), dataset_normalize]
     )
 
-    dataset_train = StanfordDogs(DATA_FOLDER, transform=transformation_dogs_train, all_data=True, download=True)
+    dataset_train = StanfordDogs(os.path.join(DATA_FOLDER, 'stanford_dogs'), transform=transformation_dogs_train, all_data=True, download=True)
     dataset_train, _ = get_train_val_split(dataset_train, 0.8, seed=SEED)
-    dataset_no_augmentation = StanfordDogs(DATA_FOLDER, transform=transformation_without_augmentation, all_data=True)
+    dataset_no_augmentation = StanfordDogs(os.path.join(DATA_FOLDER, 'stanford_dogs'), transform=transformation_without_augmentation, all_data=True)
     dataset_train_no_augmentation, dataset_test = get_train_val_split(dataset_no_augmentation, 0.8, seed=SEED)
 
     # get the training dataset for the target/shadow model
@@ -194,7 +194,7 @@ if __name__ == '__main__':
         return stl10_to_cifar[idx]
 
     stl10_ood_dataset = torchvision.datasets.STL10(
-        root=DATA_FOLDER,
+        root=os.path.join(DATA_FOLDER, 'stl10'),
         split='train',
         download=True,
         transform=transformation_without_augmentation,
@@ -203,12 +203,12 @@ if __name__ == '__main__':
     # Filter out all samples without label 'dog'
     stl10_ood_dataset = Subset(stl10_ood_dataset, np.where(stl10_ood_dataset.labels == 5)[0])
 
-    afhq_dataset = AFHQ(DATA_FOLDER, transform=transformation_without_augmentation, download=True)
+    afhq_dataset = AFHQ(os.path.join(DATA_FOLDER, 'afhq'), transform=transformation_without_augmentation, download=True)
     afhq_dogs = Subset(afhq_dataset, np.where(np.array(afhq_dataset.targets) == 1)[0])
     afhq_cats = Subset(afhq_dataset, np.where(np.array(afhq_dataset.targets) == 0)[0])
     afhq_wilds = Subset(afhq_dataset, np.where(np.array(afhq_dataset.targets) == 2)[0])
     afhq_rest = Subset(afhq_dataset, np.where(np.array(afhq_dataset.targets) != 1)[0])
-    fake_stanford_dogs = fake_dogs.FakeAFHQDogs(DATA_FOLDER, train=True, transform=transformation_without_augmentation)
+    fake_stanford_dogs = fake_dogs.FakeAFHQDogs(os.path.join(DATA_FOLDER, 'fake_afhq_dogs'), train=True, transform=transformation_without_augmentation)
     print('')
     print(f'Number fake dog samples: {len(fake_stanford_dogs)}')
     print(f'Trainingset size: {len(dataset_train)} - Testset size: {len(dataset_test)}')
