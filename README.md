@@ -1,4 +1,4 @@
-# Do Not Trust Prediction Scores for Membership Inference Attacks
+# To Trust or Not To Trust Prediction Scores for Membership Inference Attacks
 
   <center>
   <img src="images/false_positive_samples.png" alt="False-Positive Examples"  height=300>
@@ -90,13 +90,11 @@ We use various datasets in our experiments. The following figure gives a short o
 ## Citation
 If you build upon our work, please don't forget to cite us.
 ```
-@misc{hintersdorf2021trust,
-      title={Do Not Trust Prediction Scores for Membership Inference Attacks}, 
+@inproceedings{hintersdorf2022trust,
+      title={To Trust or Not To Trust Prediction Scores for Membership Inference Attacks}, 
       author={Dominik Hintersdorf and Lukas Struppek and Kristian Kersting},
-      year={2021},
-      eprint={2111.09076},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG}
+      year={2022},
+      booktitle={Proceedings of the 31st International Joint Conference on Artificial Intelligence ({IJCAI})}
 }
 ```
 
