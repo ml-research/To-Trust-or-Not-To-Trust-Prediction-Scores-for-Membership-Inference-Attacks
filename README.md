@@ -1,4 +1,4 @@
-# To Trust or Not To Trust Prediction Scores for Membership Inference Attacks
+# To Trust or Not To Trust Prediction Scores for Membership Inference Attacks (IJCAI-ECAI 2022)
 
   <center>
   <img src="images/false_positive_samples.png" alt="False-Positive Examples"  height=300>
